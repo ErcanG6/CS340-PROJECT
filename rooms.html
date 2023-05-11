@@ -1,0 +1,139 @@
+<html>
+<head>
+<title>People</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript">
+		function showform(dowhat) {
+			/*
+			* four DIVS: browse, insert, update, delete
+			* this function sets one visible the others not
+			*/
+			if (dowhat == 'insert'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'update'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'delete'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'block';
+			}
+      else if (dowhat == 'all'){
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'block';
+			}
+			else { //by default display browse
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+		}
+    function newRoom() { showform('insert'); }
+    function updateRoom(pid) { showform('update'); }
+    function deleteRoom(pid) { showform ('delete'); }
+    function browseRooms() { showform ('browse'); }
+    function showAll() { showform ('all'); }
+</script>
+</head>
+
+<body onload="browseRooms()">
+<h1> Rooms </h1>
+
+[ <a href="index.html">Index</a>  <a href="">Employees</a> | <a href="">Projects</a> | <a href="departments.html">Departments</a> | <a href="rooms.html">Rooms</a> ]
+
+<div id="browse">
+<p><a href="#" onClick="showAll()">Display all forms</a> </p>
+<table border="1" cellpadding="5">
+  <tr>
+    <th><a href="#" onClick="newPerson()">New</a></th>
+    <th></th>
+    <th>roomID</th>
+    <th>number</th>
+    <th>departmentID</th>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateRoom('this.RoomID')">Edit</a></td>
+    <td><a href="#" onclick="deleteRoom('this.RoomID')">Delete</a></td>
+    <td align="right" >1</td>
+    <td align="right" >183</td>
+    <td align="right" >1</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateRoom('this.RoomID')">Edit</a></td>
+    <td><a href="#" onclick="deleteRoom('this.RoomID')">Delete</a></td>
+    <td align="right" >2</td>
+    <td align="right" >836</td>
+    <td align="right" >1</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateRoom('this.RoomID')">Edit</a></td>
+    <td><a href="#" onclick="deleteRoom('this.RoomID')">Delete</a></td>
+    <td align="right" >3</td>
+    <td align="right" >283</td>
+    <td align="right" >2</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateRoom('this.RoomID')">Edit</a></td>
+    <td><a href="#" onclick="deleteRoom('this.RoomID')">Delete</a></td>
+    <td align="right" >4</td>
+    <td align="right" >25</td>
+    <td align="right" >2</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</div> <!-- browse -->
+<div id="insert">
+    <form method="POST" id="addRoom">
+        <legend><strong>Add Room</strong></legend>
+          <fieldset class="fields">
+            <label> roomID </label> <input type="text" name="roomID">
+            <label> number </label> <input type="text" name="number">
+            <label> departmentID </label> <input type="text" name="departmentID">
+      </fieldset>
+          <input class="btn" type="submit" id="addroom" value="Add Room">
+          <input class="btn" type="button" value="cancel" onClick="browseRooms()">
+	</form> 
+</div><!-- insert -->
+<p>&nbsp;</p>
+<div id="update">
+    <form method="POST" id="UpdateRoom">
+        <legend><strong>Update Person</strong></legend>
+          <fieldset class="fields">
+          <input type="hidden" name="roomID" id="updateRoom" value="1">
+          <label> ID: </label> 1
+            <label> roomID </label> <input type="text" name="fname" value="">
+            <label> number </label> <input type="text" name="lname" value="">
+            <label> departmentID </label> <select name="homeworld">
+      </fieldset>
+          <input class="btn" type="submit" id="UpdateSavePerson" value="Save Update Room">
+          <input class="btn" type="button" value="cancel" onClick="browseRooms()">
+	</form> 
+</div><!-- update -->
+<p>&nbsp;</p>
+<div id="delete" style="display: block">
+  <form method="POST" id="deleteRoom">
+      <legend><strong>Delete Person</strong></legend>
+          <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <input type="hidden" name="personID" id="deletepersonID" value="1">
+            <label> <strong>roomID</strong> </label> 1
+            
+    </fieldset>
+    <input class="btn" type="submit" id="DeleteRoom" value="Delete Room">
+          <input class="btn" type="button" value="cancel" onClick="browseRooms()">
+  </form> 
+</div><!-- delete -->
+
+</body>
+</html>
