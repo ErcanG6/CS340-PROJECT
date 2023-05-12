@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>InnovativeSoft Database</title>
+    <link rel="stylesheet" href="style.css" media="screen">
+
+  </head>
+  
+  <body>
+    <header>
+      <h1 class="site-name">Projects</h1>
+	  <div id="links">
+      [ <a href="index.html">Index</a> | <a href="employees.html">Employees</a> | <a href="projects.html">Projects</a> | <a href="departments.html">Departments</a> | <a href="rooms.html">Rooms</a> ]
+	  </div>
+      <br>
+      <table border="1" cellpadding="5">
+		<tr>
+			<td>ProjectID</td>
+			<td>StartDate</td>
+			<td>EndDate</td>
+			<td>Deadline</td>
+			<td>Progress</td>
+            <td>DepartmentID</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>2002-03-01</td>
+			<td>2002-05-01</td>
+			<td>2002-06-01</td>
+			<td>0</td>
+            <td>1</td>
+		</tr>
+        <tr>
+			<td>2</td>
+			<td>2020-03-01</td>
+			<td>2021-02-01</td>
+			<td>2021-03-01</td>
+			<td>23</td>
+            <td>1</td>
+		</tr>
+        <tr>
+			<td>3</td>
+			<td>2012-11-15</td>
+			<td>2012-12-10</td>
+			<td>2012-12-15</td>
+			<td>39</td>
+            <td>2</td>
+		</tr>
+        <tr>
+			<td>4</td>
+			<td>2004-07-24</td>
+			<td>2004-08-04</td>
+			<td>2004-08-04</td>
+			<td>77</td>
+            <td>2</td>
+		</tr>
+	  </table>
+	
+      <br>
+      <div id="Insert">
+        <form>
+            <legend>Insert Project</legend>
+            <fieldset>
+                <label>StartDate</label> <input type=”text” placeholder=”2002-05-09” name=”startDate”>
+                <label>EndDate</label> <input type=”text” placeholder=”2002-05-09” name=”endDate”>
+                <label>Deadline</label> <input type=”text” placeholder=”2002-05-09” name=”Deadline”>
+                <br>
+                <label>Progress</label> <input type=”text” placeholder=”50” name=”progress”>
+                <br>
+                <label> Department </label> <select name="departmentID">
+                    <option value="0" Selected>None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    </select>
+                    <br>
+            </fieldset>
+        </form>
+        <input class="btn" type="submit" id="insertProject" value="Confirm">
+        <input class="btn" type="button" value="cancel">
+      </div>
+
+      <br>
+      <div id="Edit">
+        <form>
+            <legend>Edit Project</legend>
+            <fieldset>
+                <label>ProjectID:</label> <a>1</a>
+                <br>
+                <label>StartDate</label> <input type=”text” value=”2002-03-01” name=”startDate”>
+                <label>EndDate</label> <input type=”text” value=”2002-05-01” name=”endDate”>
+                <label>Deadline</label> <input type=”text” value=”2002-06-01” name=”Deadline”>
+                <br>
+                <label>Progress</label> <input type=”text” value=0 name=”progress”>
+                <br>
+                <label> Department </label> <select name="departmentID">
+                    <option value="0">None</option>
+                    <option value="1" Selected>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    </select>
+                    <br>
+            </fieldset>
+        </form>
+        <input class="btn" type="submit" id="editProject" value="Confirm">
+        <input class="btn" type="button" value="cancel">
+      </div>
+
+      <br>
+      <div id="Delete">
+        <form>
+            <legend>Delete Project</legend>
+            <fieldset>
+                Delete the following Project:
+                <br>
+                <label> ProjectID </label> <select name="projectID">
+                    <option value="1" selected>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    </select>
+            </fieldset>
+        </form>
+        <input class="btn" type="submit" id="deleteProject" value="Confirm">
+        <input class="btn" type="button" value="cancel">
+      </div>
+
+  </body>
+</html>
