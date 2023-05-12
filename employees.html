@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>InnovativeSoft Database</title>
+    <link rel="stylesheet" href="style.css" media="screen">
+
+  </head>
+  
+  <body>
+    <header>
+      <h1 class="site-name">InnovativeSoft Database</h1>
+	  <div id="links">
+		[ <a href="">Employees</a> | <a href="">Projects</a> | <a href="">Departments</a> | <a href="">Rooms</a> | <a href="index.html">Index</a> ]
+	  </div>
+      <br>
+      <table border="1" cellpadding="5">
+		<tr>
+			<td></td>
+			<td></td>
+			<td>EmployeeID</td>
+			<td>Name</td>
+			<td>DepartmentID</td>
+			<td>ManagerID</td>
+			<td>RoomID</td>
+		</tr>
+		<tr>
+			<td>Edit</td>
+			<td>Delete</td>
+			<td>1</td>
+			<td>Tim</td>
+			<td>1</td>
+			<td>4</td>
+			<td>1</td>
+		</tr>
+        <tr>
+			<td>Edit</td>
+			<td>Delete</td>
+			<td>2</td>
+			<td>Hailey</td>
+			<td>1</td>
+			<td>3</td>
+			<td>2</td>
+		</tr>
+        <tr>
+			<td>Edit</td>
+			<td>Delete</td>
+			<td>3</td>
+			<td>Chris</td>
+			<td>2</td>
+			<td>NULL</td>
+			<td>3</td>
+		</tr>
+        <tr>
+			<td>Edit</td>
+			<td>Delete</td>
+			<td>4</td>
+			<td>Chloe</td>
+			<td>2</td>
+			<td>NULL</td>
+			<td>4</td>
+		</tr>
+	  </table>
+	
+      <br>
+      <div id="Insert">
+        <form>
+            <legend>Insert Employee</legend>
+            <fieldset>
+                <label>Name</label> <input type=”text” placeholder=”name” name=”name”>
+                <br>
+                <label> Department </label> <select name="departmentID">
+                    <option value="0" Selected>None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    </select>
+                    <br>
+                <label> Manager </label> <select name="managerID">
+                    <option value="0" Selected>None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    </select>
+                <br>
+                <label> Room </label> <select name="roomID">
+                    <option value="0" Selected>None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    </select>
+            </fieldset>
+        </form>
+        <input class="btn" type="submit" id="insertEmployee" value="Confirm">
+        <input class="btn" type="button" value="cancel">
+      </div>
+
+      <br>
+      <div id="Edit">
+        <form>
+            <legend>Edit Employee</legend>
+            <fieldset>
+                <label>EmployeeID:</label> <a>1</a>
+                <br>
+                <label>Name</label> <input type=”text” value="Tim">
+                <br>
+                <label> Department </label> <select name="departmentID">
+                    <option value="0">None</option>
+                    <option value="1" Selected>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    </select>
+                    <br>
+                <label> Manager </label> <select name="managerID">
+                    <option value="0">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4" Selected>4</option>
+                    </select>
+                <br>
+                <label> Room </label> <select name="roomID">
+                    <option value="0">None</option>
+                    <option value="1" Selected>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    </select>
+            </fieldset>
+        </form>
+        <input class="btn" type="submit" id="insertEmployee" value="Confirm">
+        <input class="btn" type="button" value="cancel">
+      </div>
+
+      <br>
+      <div id="Delete">
+        <form>
+            <legend>Delete Employee</legend>
+            <fieldset>
+                Delete the following Employee:
+                <br>
+                <label> EmployeeID </label> <select name="employeeID">
+                    <option value="1" selected>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    </select>
+            </fieldset>
+        </form>
+        <input class="btn" type="submit" id="insertEmployee" value="Confirm">
+        <input class="btn" type="button" value="cancel">
+      </div>
+
+  </body>
+</html>
