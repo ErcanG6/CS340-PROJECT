@@ -1,147 +1,194 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>InnovativeSoft Database</title>
-    <link rel="stylesheet" href="style.css" media="screen">
+<head>
+<title>Employees</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript">
+    function showform(dowhat) {
+        /*
+        * four DIVS: browse, insert, update, delete
+        * this function sets one visible the others not
+        */
+        if (dowhat == 'insert'){
+            document.getElementById('browse').style.display = 'none';
+            document.getElementById('insert').style.display = 'block';
+            document.getElementById('update').style.display = 'none';
+            document.getElementById('delete').style.display = 'none';
+        }
+        else if (dowhat == 'update'){
+            document.getElementById('browse').style.display = 'none';
+            document.getElementById('insert').style.display = 'none';
+            document.getElementById('update').style.display = 'block';
+            document.getElementById('delete').style.display = 'none';
+        }
+        else if (dowhat == 'delete'){
+            document.getElementById('browse').style.display = 'none';
+            document.getElementById('insert').style.display = 'none';
+            document.getElementById('update').style.display = 'none';
+            document.getElementById('delete').style.display = 'block';
+        }
+        else if (dowhat == 'all'){
+                  document.getElementById('browse').style.display = 'block';
+                  document.getElementById('insert').style.display = 'block';
+                  document.getElementById('update').style.display = 'block';
+                  document.getElementById('delete').style.display = 'block';
+        }
+        else { //by default display browse
+            document.getElementById('browse').style.display = 'block';
+            document.getElementById('insert').style.display = 'none';
+            document.getElementById('update').style.display = 'none';
+            document.getElementById('delete').style.display = 'none';
+            }
+        }
+        function newEmployee() { showform('insert'); }
+        function updateEmployee(pid) { showform('update'); }
+        function deleteEmployee(pid) { showform ('delete'); }
+        function browseEmployees() { showform ('browse'); }
+        function showAll() { showform ('all'); }
+</script>
+</head>
 
-  </head>
-  
-  <body>
-    <header>
-      <h1 class="site-name">Employees</h1>
-	  <div id="links">
-      [ <a href="index.html">Index</a> | <a href="employees.html">Employees</a> | <a href="projects.html">Projects</a> | <a href="departments.html">Departments</a> | <a href="rooms.html">Rooms</a> ]
-	  </div>
-      <br>
-      <table border="1" cellpadding="5">
-		<tr>
-			<td>EmployeeID</td>
-			<td>Name</td>
-			<td>DepartmentID</td>
-			<td>ManagerID</td>
-			<td>RoomID</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>Tim</td>
-			<td>1</td>
-			<td>4</td>
-			<td>1</td>
-		</tr>
-        <tr>
-			<td>2</td>
-			<td>Hailey</td>
-			<td>1</td>
-			<td>3</td>
-			<td>2</td>
-		</tr>
-        <tr>
-			<td>3</td>
-			<td>Chris</td>
-			<td>2</td>
-			<td>NULL</td>
-			<td>3</td>
-		</tr>
-        <tr>
-			<td>4</td>
-			<td>Chloe</td>
-			<td>2</td>
-			<td>NULL</td>
-			<td>4</td>
-		</tr>
-	  </table>
-	
-      <br>
-      <div id="Insert">
-        <form>
-            <legend>Insert Employee</legend>
-            <fieldset>
-                <label>Name</label> <input type=”text” placeholder=”name” name=”name”>
-                <br>
-                <label> Department </label> <select name="departmentID">
-                    <option value="0" Selected>None</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    </select>
-                    <br>
-                <label> Manager </label> <select name="managerID">
-                    <option value="0" Selected>None</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    </select>
-                <br>
-                <label> Room </label> <select name="roomID">
-                    <option value="0" Selected>None</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    </select>
-            </fieldset>
-        </form>
-        <input class="btn" type="submit" id="insertEmployee" value="Confirm">
-        <input class="btn" type="button" value="cancel">
-      </div>
+<body onload="browseEmployees()">
+<h1>Employees</h1>
 
-      <br>
-      <div id="Edit">
-        <form>
-            <legend>Edit Employee</legend>
-            <fieldset>
-                <label>EmployeeID:</label> <a>1</a>
-                <br>
-                <label>Name</label> <input type=”text” value="Tim">
-                <br>
-                <label> Department </label> <select name="departmentID">
-                    <option value="0">None</option>
-                    <option value="1" Selected>1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    </select>
-                    <br>
-                <label> Manager </label> <select name="managerID">
-                    <option value="0">None</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4" Selected>4</option>
-                    </select>
-                <br>
-                <label> Room </label> <select name="roomID">
-                    <option value="0">None</option>
-                    <option value="1" Selected>1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    </select>
-            </fieldset>
-        </form>
-        <input class="btn" type="submit" id="editEmployee" value="Confirm">
-        <input class="btn" type="button" value="cancel">
-      </div>
+[ <a href="index.html">Index</a> | <a href="employees.html">Employees</a> | <a href="projects.html">Projects</a> | <a href="employees_projects.html">Employees_Projects</a> | <a href="departments.html">Departments</a> | <a href="rooms.html">Rooms</a> ]
 
-      <br>
-      <div id="Delete">
-        <form>
-            <legend>Delete Employee</legend>
-            <fieldset>
-                Delete the following Employee:
+<div id="browse">
+    <p><a href="#" onClick="showAll()">Display all forms</a> </p>
+    <table border="1" cellpadding="5">
+      <tr>
+        <th><a href="#" onClick="newEmployee()">New</a></th>
+        <th></th>
+        <td>EmployeeID</td>
+        <td>Name</td>
+        <td>DepartmentID</td>
+        <td>ManagerID</td>
+        <td>RoomID</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateEmployee('this.EmployeeID')">Edit</a></td>
+        <td><a href="#" onclick="deleteEmployee('this.EmployeeID')">Delete</a></td>
+        <td>1</td>
+        <td>Tim</td>
+        <td>1</td>
+        <td>4</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateEmployee('this.EmployeeID')">Edit</a></td>
+        <td><a href="#" onclick="deleteEmployee('this.EmployeeID')">Delete</a></td>
+        <td>2</td>
+        <td>Hailey</td>
+        <td>1</td>
+        <td>3</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateEmployee('this.EmployeeID')">Edit</a></td>
+        <td><a href="#" onclick="deleteEmployee('this.EmployeeID')">Delete</a></td>
+        <td>3</td>
+        <td>Chris</td>
+        <td>2</td>
+        <td>NULL</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateEmployee('this.EmployeeID')">Edit</a></td>
+        <td><a href="#" onclick="deleteEmployee('this.EmployeeID')">Delete</a></td>
+        <td>4</td>
+        <td>Chloe</td>
+        <td>2</td>
+        <td>NULL</td>
+        <td>4</td>
+      </tr>
+    </table>
+    <p>&nbsp;</p>
+</div> <!-- browse -->
+<div id="insert">
+    <form method="POST" id="addEmployee">
+        <legend><strong>Add Employee</strong></legend>
+          <fieldset class="fields">
+            <label>Name</label> <input type=”text” placeholder=”name” name=”name”>
+              <br>
+              <label> Department </label> <select name="departmentID">
+                  <option value="0" Selected>None</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  </select>
+                  <br>
+              <label> Manager </label> <select name="managerID">
+                  <option value="0" Selected>None</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  </select>
+              <br>
+              <label> Room </label> <select name="roomID">
+                  <option value="0" Selected>None</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  </select>
+        </fieldset>
+          <input class="btn" type="submit" id="addEmployee" value="Add Employee">
+          <input class="btn" type="button" value="cancel" onClick="browseEmployees()">
+    </form> 
+</div><!-- insert -->
+<p>&nbsp;</p>
+<div id="update">
+    <form method="POST" id="updateEmployee">
+        <legend><strong>Update Employee</strong></legend>
+          <fieldset class="fields">
+            <label>EmployeeID:</label> <a>1</a>
+            <br>
+            <label>Name</label> <input type=”text” value="Tim">
+            <br>
+            <label> Department </label> <select name="departmentID">
+                <option value="0">None</option>
+                <option value="1" Selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                </select>
                 <br>
-                <label> EmployeeID </label> <select name="employeeID">
-                    <option value="1" selected>1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    </select>
-            </fieldset>
-        </form>
-        <input class="btn" type="submit" id="deleteEmployee" value="Confirm">
-        <input class="btn" type="button" value="cancel">
-      </div>
-
-  </body>
+            <label> Manager </label> <select name="managerID">
+                <option value="0">None</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4" Selected>4</option>
+                </select>
+            <br>
+            <label> Room </label> <select name="roomID">
+                <option value="0">None</option>
+                <option value="1" Selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                </select>
+      </fieldset>
+          <input class="btn" type="submit" id="updateEmployee" value="Save Employee">
+          <input class="btn" type="button" value="cancel" onClick="browseEmployees()">
+	</form> 
+</div><!-- update -->
+<p>&nbsp;</p>
+<div id="delete" style="display: block">
+  <form method="POST" id="deleteEmployee">
+      <legend><strong>Delete Employee</strong></legend>
+          <fieldset class="fields">
+            Delete the following Employee:
+            <br>
+            <label> EmployeeID </label> <select name="employeeID">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                </select>
+            
+    </fieldset>
+    <input class="btn" type="submit" id="DeleteEmployee" value="Delete Employee">
+          <input class="btn" type="button" value="cancel" onClick="browseEmployees()">
+  </form> 
+</div><!-- delete -->
 </html>
