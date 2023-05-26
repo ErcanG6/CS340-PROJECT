@@ -33,6 +33,7 @@ class Employee {
 }
 
 class Project {
+    dateFormat = ', \'%Y-%m-%d\'';
     constructor(projectID, startDate, endDate, deadline, progress, departmentID) {
         this.projectID = projectID;
         this.startDate = startDate;
@@ -47,14 +48,16 @@ class Project {
     }
 
     UpdateString() {
-        return 'startDate = ' + this.startDate + ', endDate = ' + this.endDate + ', deadline = ' + this.deadline + ', progress = ' + this.process + ', departmentID = ' + this.departmentID;
+        return 'startDate = STR_TO_DATE(' + this.startDate + Project.dateFormat + '), endDate = STR_TO_DATE(' + this.endDate + Project.dateFormat + '), deadline = STR_TO_DATE(' + this.deadline + Project.dateFormat +'), progress = ' + this.progress + ', departmentID = ' + this.departmentID;
     }
 }
 
 class EmployeeProject {
-    constructor(employeeID, projectID) {
+    constructor(employeeID, projectID, oldEmployeeID = null, oldProjectID = null) {
         this.employeeID = employeeID;
         this.projectID = projectID;
+        this.oldEmployeeID = oldEmployeeID;
+        this.oldProjectID = oldProjectID;
     }
 
     InsertString(){

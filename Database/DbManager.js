@@ -6,9 +6,9 @@ var mysql = require('mysql');
 var pool = mysql.createPool({
     connectionLimit : 10,
     host            : 'classmysql.engr.oregonstate.edu',
-    user            : 'cs340_perezand',
-    password        : '8543',
-    database        : 'cs340_perezand'
+    user            : 'cs340_*ONID*',
+    password        : '*PASSWORD*',
+    database        : 'cs340_*ONID*'
 });
 
 // link db models
@@ -51,9 +51,10 @@ async function Insert(table, columns, values) {
     return await RunQuery('INSERT INTO ' + table + ' ' + columns + ' VALUES (' + values + ') RETURNING *;');
 }
 
-async function UpdateById(table, idName, id, values) {
+async function UpdateById(table, idName, id, values, newID = null) {
     await RunQuery('UPDATE ' + table + ' SET ' + values + ' WHERE ' + idName + ' = ' + id + ';');
-    return await SelectById(table, idName, id);
+
+    return await SelectById(table, idName, (newID == null ? id : newID));
 }
 
 async function DeleteById(table, idName, id) {
@@ -209,7 +210,7 @@ async function SelectAllEmployeesProjects() {
 async function SelectEmployeeProjectById(employeeID, projectID) {
     compositeName = '(' + EMPLOYEES_ID + ', ' + PROJECTS_ID + ')';
     compositeID = '(' + employeeID + ', ' + projectID + ')';
-    return ConstructEmployeesProjects(await SelectById(PROJECTS_TABLE, compositeName,  compositeID))[0];
+    return ConstructEmployeesProjects(await SelectById(EMPLOYEES_PROJECTS_TABLE, compositeName,  compositeID))[0];
 }
 
 async function InsertEmployeeProject(employeeProject) {
@@ -218,14 +219,15 @@ async function InsertEmployeeProject(employeeProject) {
 
 async function UpdateEmployeeProjectById(employeeProject) {
     compositeName = '(' + EMPLOYEES_ID + ', ' + PROJECTS_ID + ')';
-    compositeID = '(' + employeeProject.employeeID + ', ' + employeeProject.projectID + ')';
-    return ConstructEmployeesProjects(await UpdateById(PROJECTS_TABLE, compositeName, compositeID, employeeProject.UpdateString()))[0];
+    compositeID = '(' + employeeProject.oldEmployeeID + ', ' + employeeProject.oldProjectID + ')';
+    newID = '(' + employeeProject.employeeID + ', ' + employeeProject.projectID + ')';
+    return ConstructEmployeesProjects(await UpdateById(EMPLOYEES_PROJECTS_TABLE, compositeName, compositeID, employeeProject.UpdateString(), newID))[0];
 }
 
 async function DeleteEmployeeProjectById(employeeID, projectID) {
     compositeName = '(' + EMPLOYEES_ID + ', ' + PROJECTS_ID + ')';
     compositeID = '(' + employeeID + ', ' + projectID + ')';
-    return await DeleteById(PROJECTS_TABLE, compositeName, compositeID);
+    return await DeleteById(EMPLOYEES_PROJECTS_TABLE, compositeName, compositeID);
 }
 
 module.exports.SelectAllEmployeesProjects         = SelectAllEmployeesProjects;

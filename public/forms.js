@@ -12,19 +12,6 @@ function getPort() {
 const port = getPort();
 const forms = ['browse', 'insert', 'update', 'delete', 'view'];
 const tables = ['Departments', 'Employees', 'EmployeesProjects', 'Projects', 'Rooms'];
-// WORKING: Departments, Employees, Rooms
-
-/*  Bug List
-
-    Insert: Projects
-
-    Update: Projects, EmployeesProjects
-
-    Delete: Projects, EmployeeProjects
-
-    View: Projects
-
-*/
 
 currForm = 0
 // switches displays of divs
@@ -53,6 +40,8 @@ function updateForm(type, data) {
             form.roomID.value = parseInt(data.roomID);
             break;
         case 2:
+            form.oldEmployeeID.value = parseInt(data.employeeID);
+            form.oldProjectID.value = parseInt(data.projectID);
             form.employeeID.value = parseInt(data.employeeID);
             form.projectID.value = parseInt(data.projectID);
             break;
@@ -300,6 +289,7 @@ async function resetBrowse() {
 async function getData(type) {
     var res = await fetch('http://' + server + '.engr.oregonstate.edu:' + port + '/api/' + tables[type]);
     var data = await res.json();
+    
     var table = document.getElementById('browseTable').childNodes[1];
     
     switch(type) {

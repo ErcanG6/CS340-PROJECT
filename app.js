@@ -5,7 +5,7 @@
 // Express
 var express = require('express');   // We are using the express library for the web server
 var app     = express();            // We need to instantiate an express object to interact with the server in our code
-const PORT  = 7877;                 // Set a port number at the top so it's easy to change in the future
+const PORT  = *PORT*;                 // Set a port number at the top so it's easy to change in the future
 const __viewDir = __dirname + '/Views/';
 
 app.use(express.static(__dirname + '/public'));
@@ -55,7 +55,7 @@ app.post('/api/:Action/:Type/', async (req, res) => {
                         data.data = await dbManager.UpdateEmployeeById(new models.Employee(json.employeeID, json.name, json.departmentID, json.managerID, json.roomID));
                         break;
                     case 'EmployeesProjects':
-                        data.data = await dbManager.UpdateEmployeeProjectById(new models.EmployeeProject(json.employeeID, json.projectID));
+                        data.data = await dbManager.UpdateEmployeeProjectById(new models.EmployeeProject(json.employeeID, json.projectID, json.oldEmployeeID, json.oldProjectID));
                         break;
                     case 'Projects':
                         data.data = await dbManager.UpdateProjectById(new models.Project(json.projectID, json.startDate, json.endDate, json.deadline, json.progress, json.departmentID));
