@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "forever": "^4.0.3",
+    "mysql": "^2.18.1"
+  },
+  "name": "cs340-project",
+  "description": "To use the files: Put app.js in the root directory. Make 4 folders in the root named 'Database', 'Models', 'public', and 'Views' Put DbManager.js in the 'Database' folder Put Models.js in the 'Models' folder Put forms.js and style.css in the 'public' folder Put all the html files in the 'Views' folder Change the port number in app.js",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ErcanG6/CS340-PROJECT.git"
+  },
+  "author": "andres",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ErcanG6/CS340-PROJECT/issues"
+  },
+  "homepage": "https://github.com/ErcanG6/CS340-PROJECT#readme"
+}
