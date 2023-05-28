@@ -33,22 +33,22 @@ class Employee {
 }
 
 class Project {
-    dateFormat = ', \'%Y-%m-%d\'';
     constructor(projectID, startDate, endDate, deadline, progress, departmentID) {
         this.projectID = projectID;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.deadline = deadline;
+        this.startDate = startDate;// (startDate < endDate) and (startDate < deadline)
+        this.endDate = endDate;    // (endDate > startDate)
+        this.deadline = deadline;  // (deadline > startDate)
         this.progress = progress;
         this.departmentID = departmentID;
+        this.dateFormat = '\'%Y-%m-%d\'';
     }
 
     InsertString(){
-        return '\'' + this.startDate + '\', \'' + this.endDate + '\', \'' + this.deadline + '\', \'' + this.progress + '\', \'' + this.departmentID + '\'';
+        return 'STR_TO_DATE(\'' + this.startDate + '\', ' + this.dateFormat + '), STR_TO_DATE(\'' + this.endDate + '\', ' + this.dateFormat + '), STR_TO_DATE(\'' + this.deadline + '\', ' + this.dateFormat + '), \'' + this.progress + '\', \'' + this.departmentID + '\'';
     }
 
     UpdateString() {
-        return 'startDate = STR_TO_DATE(' + this.startDate + Project.dateFormat + '), endDate = STR_TO_DATE(' + this.endDate + Project.dateFormat + '), deadline = STR_TO_DATE(' + this.deadline + Project.dateFormat +'), progress = ' + this.progress + ', departmentID = ' + this.departmentID;
+        return 'startDate = STR_TO_DATE(\'' + (this.startDate || 'NULL') + '\', ' + this.dateFormat + '), endDate = STR_TO_DATE(\'' + (this.endDate || 'NULL') + '\', ' + this.dateFormat + '), deadline = STR_TO_DATE(\'' + (this.deadline || 'NULL') + '\', ' + this.dateFormat +'), progress = ' + this.progress + ', departmentID = ' + this.departmentID;
     }
 }
 

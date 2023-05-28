@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Employees_Projects</title>
+<title>InnovativeSoft Database | Employees_Projects</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 <script src="forms.js"></script>
 </head>
@@ -14,6 +14,7 @@
   <table id="browseTable">
     <tr id="2">
       <th><p onclick="newForm()">New</p></th>
+      <th></th>
       <th></th>
       <th>EmployeeID</th>
       <th>ProjectID</th>
@@ -64,9 +65,10 @@
     <legend><strong>Delete Employee Project</strong></legend>
     <fieldset class="fields">
       <p>Are you sure you wish to delete the following?</p>
+      <br>
       <label><strong> EmployeeID: </strong></label>
       <input type="number" name="employeeID" readonly>
-
+      <br>
       <label><strong> projectID: </strong></label>
       <input type="number" name="projectID" readonly>
     </fieldset>
@@ -79,8 +81,11 @@
   <form id="viewData">
     <legend><strong>View Employee Project</strong></legend>
     <fieldset class="fields">
-      <label> EmployeeID: </label> <input type="number" name="employeeID" disabled>
-      <label> ProjectID: </label> <input type="number" name="projectID" disabled>
+      <label> EmployeeID: </label>
+      <input type="number" name="employeeID" disabled>
+      <br>
+      <label> ProjectID: </label>
+      <input type="number" name="projectID" disabled>
     </fieldset>
     <input class="btn" type="button" value="cancel" onclick="browseForm()">
 	</form> 

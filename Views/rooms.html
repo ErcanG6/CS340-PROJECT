@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Rooms</title>
+<title>InnovativeSoft Database | Rooms</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 <script src="forms.js"></script>
 </head>
@@ -15,6 +15,7 @@
     <tr id="4">
       <th><p onclick="newForm()">New</p></th>
       <th></th>
+      <th></th>
       <th>RoomID</th>
       <th>Number</th>
       <th>DepartmentID</th>
@@ -28,7 +29,7 @@
     <fieldset class="fields">
       <label> Number: </label>
       <input type="number" name="number">
-
+      <br>
       <label> DepartmentID: </label>
       <input type="number" name="departmentID">
     </fieldset>
@@ -44,7 +45,7 @@
       <input type="hidden" name="roomID">
       <label> Number: </label>
       <input type="number" name="number">
-
+      <br>
       <label> DepartmentID: </label>
       <input type="number" name="departmentID">
     </fieldset>
@@ -58,10 +59,10 @@
     <legend><strong>Delete Room</strong></legend>
     <fieldset class="fields">
       <p>Are you sure you wish to delete the following?</p>
-      
+      <br>
       <label><strong> ID: </strong></label>
       <input type="number" name="roomID" readonly>
-
+      <br>
       <label><strong> Number: </strong></label>
       <input type="number" name="number" readonly>
     </fieldset>
@@ -76,10 +77,10 @@
     <fieldset class="fields">
       <label> ID: </label>
       <input type="number" name="roomID" disabled>
-
+      <br>
       <label> Number: </label>
       <input type="number" name="number" disabled>
-
+      <br>
       <label> DepartmentID: </label>
       <input type="number" name="departmentID" disabled>
     </fieldset>

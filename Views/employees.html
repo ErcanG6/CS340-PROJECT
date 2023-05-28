@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Employees</title>
+<title>InnovativeSoft Database | Employees</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 <script src="forms.js"></script>
 </head>
@@ -14,6 +14,7 @@
   <table id="browseTable">
     <tr id="1">
       <th><p onclick="newForm()">New</p></th>
+      <th></th>
       <th></th>
       <td>EmployeeID</td>
       <td>Name</td>
@@ -30,7 +31,7 @@
     <fieldset class="fields">
       <label> Name: </label>
       <input type="text" name="name">
-      
+      <br>
       <label> DepartmentID: </label>
       <select name="departmentID">
         <option value="" selected>None</option>
@@ -39,7 +40,7 @@
         <option value="2">2</option>
         <option value="3">3</option>
       </select>
-      
+      <br>
       <label> ManagerID: </label>
       <select name="managerID">
         <option value="" selected>None</option>
@@ -72,8 +73,8 @@
       <input type="hidden" name="employeeID">
       
       <label> Name: </label>
-      <input type=”text” name="name">
-      
+      <input type="text" name="name">
+      <br>
       <label> DepartmentID: </label>
       <select name="departmentID">
         <option value="" selected>None</option>
@@ -113,7 +114,7 @@
     <legend><strong>Delete Employee</strong></legend>
     <fieldset class="fields">
       <p>Delete the following Employee?</p>
-
+      <br>
       <label> EmployeeID: </label>
       <input type="number" name="employeeID" readonly>
       
@@ -129,16 +130,16 @@
     <fieldset class="fields">
       <label> ID: </label>
       <input type="number" name="employeeID" disabled>
-
+      <br>
       <label> Name: </label>
       <input type="text" name="name" disabled>
-
+      <br>
       <label> DepartmentID: </label>
       <input type="number" name="departmentID" disabled>
-
+      <br>
       <label> ManagerID: </label>
       <input type="number" name="managerID" disabled>
-
+      <br>
       <label> RoomID: </label>
       <input type="number" name="roomID" disabled>
     </fieldset>

@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Projects</title>
+<title>InnovativeSoft Database | Projects</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 <script src="forms.js"></script>
 </head>
@@ -14,6 +14,7 @@
   <table id="browseTable">
     <tr id="3">
       <th><p onclick="newForm()">New</p></th>
+      <th></th>
       <th></th>
       <td>ProjectID</td>
 		  <td>StartDate</td>
@@ -29,19 +30,19 @@
   <form id="createData">
     <legend><strong>Add Project</strong></legend>
     <fieldset class="fields">
-      <p>Enter dates in following format: YYYY-MM-DD</p>
       <label> StartDate: </label>
-      <input type=”date” name=”startDate”>
-
+      <input type="date" name="startDate" onclick="this.showPicker()">
+      <br>
       <label> EndDate: </label>
-      <input type=”date” name=”endDate”>
-
+      <input type="date" name="endDate" onclick="this.showPicker()">
+      <br>
       <label> Deadline: </label>
-      <input type=”date” name=”deadline”>
-      
+      <input type="date" name="deadline" onclick="this.showPicker()">
+      <br>
       <label> Progress: </label>
-      <input type=”number” name=”progress”>
-
+      <input type="range" name="progress" min="0" max="100" value="0" oninput="ProgressChanged(this, 'createProgressOutput')">
+      <p id="createProgressOutput" style="display: inline-block;">0</p>
+      <br>
       <label> Department: </label>
       <select name="departmentID">
         <option value="">None</option>
@@ -60,21 +61,23 @@
   <form id="updateData">
     <legend><strong>Update Project</strong></legend>
     <fieldset class="fields">
+      <input type="hidden" name="projectID">
       <label> StartDate: </label>
-      <input type=”date” name=”startDate”>
-
+      <input type="date" name="startDate" onclick="this.showPicker()">
+      <br>
       <label> EndDate: </label>
-      <input type=”date” name=”endDate”>
-
+      <input type="date" name="endDate" onclick="this.showPicker()">
+      <br>
       <label> Deadline: </label>
-      <input type=”date” name=”deadline”>
-      
+      <input type="date" name="deadline" onclick="this.showPicker()">
+      <br>
       <label> Progress: </label>
-      <input type="number" name=”progress”>
-      
+      <input type="range" name="progress" min="0" max="100" oninput="ProgressChanged(this, 'updateProgressOutput')">
+      <p id="updateProgressOutput" style="display: inline-block;">0</p>
+      <br>
       <label> Department: </label>
       <select name="departmentID">
-        <option value="" selected>None</option>
+        <option value="">None</option>
         <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -82,7 +85,7 @@
       </select>
     </fieldset>
     <input class="btn" type="button" value="Save Project" onclick="handleData(3, 1)">
-    <input class="btn" type="button" value="cancel" onclick="browseProjects()">
+    <input class="btn" type="button" value="cancel" onclick="browseForm()">
 	</form> 
 </div><!-- update -->
 
@@ -90,13 +93,13 @@
   <form id="deleteData">
     <legend><strong>Delete Project</strong></legend>
     <fieldset class="fields">
-      Delete the following Project:
-      
+      <p>Are you sure you wish to delete the following?</p>
+      <br>
       <label> ProjectID: </label>
       <input name="projectID" readonly>
     </fieldset>
     <input class="btn" type="button" value="Delete Project" onclick="handleData(3, 2)">
-    <input class="btn" type="button" value="cancel" onClick="browseProjects()">
+    <input class="btn" type="button" value="cancel" onclick="browseForm()">
   </form> 
 </div><!-- delete -->
 
@@ -106,19 +109,19 @@
     <fieldset class="fields">
       <label> ID: </label>
       <input type="number" name="projectID" disabled>
-
+      <br>
       <label> StartDate: </label>
       <input type="date" name="startDate" disabled>
-
+      <br>
       <label> EndDate: </label>
       <input type="date" name="endDate" disabled>
-
+      <br>
       <label> Deadline: </label>
       <input type="date" name="deadline" disabled>
-
+      <br>
       <label> Progress: </label>
       <input type="number" name="progress" disabled>
-
+      <br>
       <label> DepartmentID: </label>
       <input type="number" name="departmentID" disabled>
     </fieldset>

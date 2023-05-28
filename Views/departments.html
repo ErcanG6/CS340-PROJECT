@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Departments</title>
+<title>InnovativeSoft Database | Departments</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 <script src="forms.js"></script>
 </head>
@@ -15,6 +15,7 @@
     <tr id="0">
       <th><p onclick="newForm()">New</p></th>
       <th></th>
+      <th></th>
       <th>DepartmentID</th>
       <th>Name</th>
       <th>ManagerID</th>
@@ -28,7 +29,7 @@
     <fieldset class="fields">
       <label> Name: </label>
       <input type="text" name="name">
-
+      <br>
       <label> ManagerID: </label>
       <input type="number" min="0" name="managerID">
     </fieldset>
@@ -42,8 +43,11 @@
     <legend><strong>Update Department</strong></legend>
     <fieldset class="fields">
       <input type="hidden" name="departmentID">
-      <label> Name: </label> <input type="text" name="name">
-      <label> ManagerID: </label> <input type="number" name="managerID">
+      <label> Name: </label>
+      <input type="text" name="name">
+      <br>
+      <label> ManagerID: </label>
+      <input type="number" name="managerID">
     </fieldset>
     <input class="btn" type="button" value="Save Department" onclick="handleData(0, 1)">
     <input class="btn" type="button" value="cancel" onclick="browseForm()">
@@ -55,9 +59,10 @@
     <legend><strong>Delete Department</strong></legend>
     <fieldset class="fields">
       <p>Are you sure you wish to delete the following?</p>
+      <br>
       <label><strong> ID: </strong></label>
       <input type="number" name="departmentID" readonly>
-
+      <br>
       <label><strong> Name: </strong></label>
       <input type="text" name="name" disabled>
     </fieldset>
@@ -72,10 +77,10 @@
     <fieldset class="fields">
       <label> ID: </label>
       <input type="number" name="departmentID" disabled>
-
+      <br>
       <label> Name: </label>
       <input type="text" name="name" disabled>
-
+      <br>
       <label> ManagerID: </label>
       <input type="number" name="managerID" disabled>
     </fieldset>
