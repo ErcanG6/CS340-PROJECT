@@ -13,7 +13,7 @@
 <div id="browse">
   <table id="browseTable">
     <tr id="3">
-      <th><p onclick="newForm()">New</p></th>
+      <th class="clickable"><p onclick="newForm()">New</p></th>
       <th></th>
       <th></th>
       <td>ProjectID</td>
@@ -44,12 +44,7 @@
       <p id="createProgressOutput" style="display: inline-block;">0</p>
       <br>
       <label> Department: </label>
-      <select name="departmentID">
-        <option value="">None</option>
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
+      <select name="departmentID" id="departmentSelect">
       </select>
     </fieldset>
     <input class="btn" type="button" value="Add Project" onclick="handleData(3, 0)">
@@ -76,12 +71,7 @@
       <p id="updateProgressOutput" style="display: inline-block;">0</p>
       <br>
       <label> Department: </label>
-      <select name="departmentID">
-        <option value="">None</option>
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
+      <select name="departmentID" id="departmentSelect">
       </select>
     </fieldset>
     <input class="btn" type="button" value="Save Project" onclick="handleData(3, 1)">

@@ -228,6 +228,7 @@ async function getData(type) {
     
     switch(type) {
         case 0: //Departments
+            updateDepartmentsOptions();
             data.forEach(department => {
                 table.append(constructDepartmentRow(
                     department.departmentID,
@@ -237,6 +238,7 @@ async function getData(type) {
             });
             break;
         case 1: //Employees
+            updateEmployeesOptions();
             data.forEach(employee => {
                 table.append(constructEmployeeRow(
                     employee.employeeID,
@@ -248,7 +250,7 @@ async function getData(type) {
             });
             break;
         case 2: //EmployeesProjects
-            updateEmployeeProjectOptions();
+            updateEmployeesProjectsOptions();
             data.forEach(empProj => {
                 table.append(constructEmployeeProjectRow(
                     empProj.employeeID,
@@ -257,6 +259,7 @@ async function getData(type) {
             });
             break;
         case 3: //Projects
+            updateProjectsOptions();
             data.forEach(project => {
                 table.append(constructProjectRow(
                     project.projectID,
@@ -269,6 +272,7 @@ async function getData(type) {
             });
             break;
         case 4: //Rooms
+            updateRoomsOptions();
             data.forEach(room => {
                 table.append(constructRoomRow(
                     room.roomID,
@@ -282,13 +286,81 @@ async function getData(type) {
     }
 }
 
-async function updateEmployeeProjectOptions(type) {
+async function updateDepartmentsOptions() {
+    var resMan = await fetch('http://' + server + '.engr.oregonstate.edu:' + port + '/api/' + tables[1]);
+    var dataMan = await resMan.json();
+    select = document.querySelectorAll('#managerSelect');
+    select.forEach(form => { // Update options for each form with id=employeeSelect
+        var i = form.options.length - 1;
+        for (; i >= 0; i--) { // Remove previous options of list if there were any
+            form.remove(i);
+        }
+        dataMan.forEach(manager => {
+            let newOption = new Option(manager.employeeID, manager.employeeID);
+            form.add(newOption, undefined);
+        });
+    });
+}
+
+async function updateEmployeesOptions() {
+    var resMan = await fetch('http://' + server + '.engr.oregonstate.edu:' + port + '/api/' + tables[1]);
+    var dataMan = await resMan.json();
+    var resDep = await fetch('http://' + server + '.engr.oregonstate.edu:' + port + '/api/' + tables[0]);
+    var dataDep = await resDep.json();
+    var resRoom = await fetch('http://' + server + '.engr.oregonstate.edu:' + port + '/api/' + tables[4]);
+    var dataRoom = await resRoom.json();
+    select = document.querySelectorAll('#managerSelect');
+    select.forEach(form => { // Update options for each form with id=employeeSelect
+        var i = form.options.length - 1;
+        for (; i >= 0; i--) { // Remove previous options of list if there were any
+            form.remove(i);
+        }
+        let newOption = new Option("None", "");
+        form.add(newOption, undefined);
+        dataMan.forEach(manager => {
+            let newOption = new Option(manager.employeeID, manager.employeeID);
+            form.add(newOption, undefined);
+        });
+    });
+    select = document.querySelectorAll('#departmentSelect');
+    select.forEach(form => { // Update options for each form with id=projectSelect
+        var i = form.options.length - 1;
+        for (; i >= 0; i--) { // Remove previous options of list if there were any
+            form.remove(i);
+        }
+        let newOption = new Option("None", "");
+        form.add(newOption, undefined);
+        dataDep.forEach(department => {
+            let newOption = new Option(department.departmentID, department.departmentID);
+            form.add(newOption, undefined);
+        });
+    });
+    select = document.querySelectorAll('#roomSelect');
+    select.forEach(form => { // Update options for each form with id=projectSelect
+        var i = form.options.length - 1;
+        for (; i >= 0; i--) { // Remove previous options of list if there were any
+            form.remove(i);
+        }
+        let newOption = new Option("None", "");
+        form.add(newOption, undefined);
+        dataRoom.forEach(room => {
+            let newOption = new Option(room.roomID, room.roomID);
+            form.add(newOption, undefined);
+        });
+    });
+}
+
+async function updateEmployeesProjectsOptions() {
     var resEmp = await fetch('http://' + server + '.engr.oregonstate.edu:' + port + '/api/' + tables[1]);
     var dataEmp = await resEmp.json();
     var resProj = await fetch('http://' + server + '.engr.oregonstate.edu:' + port + '/api/' + tables[3]);
     var dataProj = await resProj.json();
     select = document.querySelectorAll('#employeeSelect');
     select.forEach(form => { // Update options for each form with id=employeeSelect
+        var i = form.options.length - 1;
+        for (; i >= 0; i--) { // Remove previous options of list if there were any
+            form.remove(i);
+        }
         dataEmp.forEach(employee => {
             let newOption = new Option(employee.employeeID, employee.employeeID);
             form.add(newOption, undefined);
@@ -296,8 +368,48 @@ async function updateEmployeeProjectOptions(type) {
     });
     select = document.querySelectorAll('#projectSelect');
     select.forEach(form => { // Update options for each form with id=projectSelect
+        var i = form.options.length - 1;
+        for (; i >= 0; i--) { // Remove previous options of list if there were any
+            form.remove(i);
+        }
         dataProj.forEach(project => {
             let newOption = new Option(project.projectID, project.projectID);
+            form.add(newOption, undefined);
+        });
+    });
+}
+
+async function updateProjectsOptions() {
+    var resDep = await fetch('http://' + server + '.engr.oregonstate.edu:' + port + '/api/' + tables[0]);
+    var dataDep = await resDep.json();
+    select = document.querySelectorAll('#departmentSelect');
+    select.forEach(form => { // Update options for each form with id=projectSelect
+        var i = form.options.length - 1;
+        for (; i >= 0; i--) { // Remove previous options of list if there were any
+            form.remove(i);
+        }
+        let newOption = new Option("None", "");
+        form.add(newOption, undefined);
+        dataDep.forEach(department => {
+            let newOption = new Option(department.departmentID, department.departmentID);
+            form.add(newOption, undefined);
+        });
+    });
+}
+
+async function updateRoomsOptions() {
+    var resDep = await fetch('http://' + server + '.engr.oregonstate.edu:' + port + '/api/' + tables[0]);
+    var dataDep = await resDep.json();
+    select = document.querySelectorAll('#departmentSelect');
+    select.forEach(form => { // Update options for each form with id=projectSelect
+        var i = form.options.length - 1;
+        for (; i >= 0; i--) { // Remove previous options of list if there were any
+            form.remove(i);
+        }
+        let newOption = new Option("None", "");
+        form.add(newOption, undefined);
+        dataDep.forEach(department => {
+            let newOption = new Option(department.departmentID, department.departmentID);
             form.add(newOption, undefined);
         });
     });
@@ -308,13 +420,13 @@ function constructDepartmentRow(departmentID, name, managerID) {
     var tableRow = document.createElement('tr');
 
     var updateRow = document.createElement('td');
-    updateRow.innerHTML = '<p onclick=\'updateForm(0,' + data + ')\'>Edit</p>';
+    updateRow.innerHTML = '<p class="clickable" onclick=\'updateForm(0,' + data + ')\'>Edit</p>';
 
     var deleteRow = document.createElement('td');
-    deleteRow.innerHTML = '<p onclick=\'deleteForm(0,' + data + ')\'>Delete</p>';
+    deleteRow.innerHTML = '<p class="clickable" onclick=\'deleteForm(0,' + data + ')\'>Delete</p>';
 
     var viewRow = document.createElement('td');
-    viewRow.innerHTML = '<p onclick=\'viewForm(0,' + data + ')\'>View</p>';
+    viewRow.innerHTML = '<p class="clickable" onclick=\'viewForm(0,' + data + ')\'>View</p>';
 
     var dptID = document.createElement('td');
     dptID.style.align = "right";
@@ -336,13 +448,13 @@ function constructEmployeeRow(employeeID, name, departmentID, managerID, roomID)
     var tableRow = document.createElement('tr');
 
     var updateRow = document.createElement('td');
-    updateRow.innerHTML = '<p onclick=\'updateForm(1,' + data + ')\'>Edit</p>';
+    updateRow.innerHTML = '<p class="clickable" onclick=\'updateForm(1,' + data + ')\'>Edit</p>';
 
     var deleteRow = document.createElement('td');
-    deleteRow.innerHTML = '<p onclick=\'deleteForm(1,' + data + ')\'>Delete</p>';
+    deleteRow.innerHTML = '<p class="clickable" onclick=\'deleteForm(1,' + data + ')\'>Delete</p>';
 
     var viewRow = document.createElement('td');
-    viewRow.innerHTML = '<p onclick=\'viewForm(1,' + data + ')\'>View</p>';
+    viewRow.innerHTML = '<p class="clickable" onclick=\'viewForm(1,' + data + ')\'>View</p>';
 
     var empID = document.createElement('td');
     empID.style.align = "right";
@@ -372,13 +484,13 @@ function constructEmployeeProjectRow(employeeID, projectID) {
     var tableRow = document.createElement('tr');
 
     var updateRow = document.createElement('td');
-    updateRow.innerHTML = '<p onclick=\'updateForm(2,' + data + ')\'>Edit</p>';
+    updateRow.innerHTML = '<p class="clickable" onclick=\'updateForm(2,' + data + ')\'>Edit</p>';
 
     var deleteRow = document.createElement('td');
-    deleteRow.innerHTML = '<p onclick=\'deleteForm(2,' + data + ')\'>Delete</p>';
+    deleteRow.innerHTML = '<p class="clickable" onclick=\'deleteForm(2,' + data + ')\'>Delete</p>';
 
     var viewRow = document.createElement('td');
-    viewRow.innerHTML = '<p onclick=\'viewForm(2,' + data + ')\'>View</p>';
+    viewRow.innerHTML = '<p class="clickable" onclick=\'viewForm(2,' + data + ')\'>View</p>';
 
     var empID = document.createElement('td');
     empID.style.align = "right";
@@ -400,13 +512,13 @@ function constructProjectRow(projectID, startDate, endDate, deadline, progress, 
     var tableRow = document.createElement('tr');
 
     var updateRow = document.createElement('td');
-    updateRow.innerHTML = '<p onclick=\'updateForm(3,' + data + ')\'>Edit</p>';
+    updateRow.innerHTML = '<p class="clickable" onclick=\'updateForm(3,' + data + ')\'>Edit</p>';
 
     var deleteRow = document.createElement('td');
-    deleteRow.innerHTML = '<p onclick=\'deleteForm(3,' + data + ')\'>Delete</p>';
+    deleteRow.innerHTML = '<p class="clickable" onclick=\'deleteForm(3,' + data + ')\'>Delete</p>';
 
     var viewRow = document.createElement('td');
-    viewRow.innerHTML = '<p onclick=\'viewForm(3,' + data + ')\'>View</p>';
+    viewRow.innerHTML = '<p class="clickable" onclick=\'viewForm(3,' + data + ')\'>View</p>';
 
     var projID = document.createElement('td');
     projID.style.align = "right";
@@ -436,13 +548,13 @@ function constructRoomRow(roomID, number, departmentID) {
     var tableRow = document.createElement('tr');
 
     var updateRow = document.createElement('td');
-    updateRow.innerHTML = '<p onclick=\'updateForm(4,' + data + ')\'>Edit</p>';
+    updateRow.innerHTML = '<p class="clickable" onclick=\'updateForm(4,' + data + ')\'>Edit</p>';
 
     var deleteRow = document.createElement('td');
-    deleteRow.innerHTML = '<p onclick=\'deleteForm(4,' + data + ')\'>Delete</p>';
+    deleteRow.innerHTML = '<p class="clickable" onclick=\'deleteForm(4,' + data + ')\'>Delete</p>';
 
     var viewRow = document.createElement('td');
-    viewRow.innerHTML = '<p onclick=\'viewForm(4,' + data + ')\'>View</p>';
+    viewRow.innerHTML = '<p class="clickable" onclick=\'viewForm(4,' + data + ')\'>View</p>';
 
     var rID = document.createElement('td');
     rID.style.align = "right";

@@ -13,7 +13,7 @@
 <div id="browse">
   <table id="browseTable">
     <tr id="0">
-      <th><p onclick="newForm()">New</p></th>
+      <th class="clickable"><p onclick="newForm()">New</p></th>
       <th></th>
       <th></th>
       <th>DepartmentID</th>
@@ -31,7 +31,8 @@
       <input type="text" name="name">
       <br>
       <label> ManagerID: </label>
-      <input type="number" min="0" name="managerID">
+      <select name="managerID" id="managerSelect">
+      </select>
     </fieldset>
     <input class="btn" type="button" value="Add Department" onclick="handleData(0, 0)">
     <input class="btn" type="button" value="cancel" onclick="browseForm()">
@@ -47,7 +48,8 @@
       <input type="text" name="name">
       <br>
       <label> ManagerID: </label>
-      <input type="number" name="managerID">
+      <select name="managerID" id="managerSelect">
+      </select>
     </fieldset>
     <input class="btn" type="button" value="Save Department" onclick="handleData(0, 1)">
     <input class="btn" type="button" value="cancel" onclick="browseForm()">

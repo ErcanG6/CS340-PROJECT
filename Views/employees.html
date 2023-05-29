@@ -13,7 +13,7 @@
 <div id="browse">
   <table id="browseTable">
     <tr id="1">
-      <th><p onclick="newForm()">New</p></th>
+      <th class="clickable"><p onclick="newForm()">New</p></th>
       <th></th>
       <th></th>
       <td>EmployeeID</td>
@@ -29,36 +29,20 @@
   <form id="createData">
     <legend><strong>Add Employee</strong></legend>
     <fieldset class="fields">
+      <input type="hidden" name="employeeID">
       <label> Name: </label>
       <input type="text" name="name">
       <br>
       <label> DepartmentID: </label>
-      <select name="departmentID">
-        <option value="" selected>None</option>
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
+      <select name="departmentID" id="departmentSelect">
       </select>
       <br>
       <label> ManagerID: </label>
-      <select name="managerID">
-        <option value="" selected>None</option>
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
+      <select name="managerID" id="managerSelect">
       </select>
       <br>
       <label> RoomID: </label>
-      <select name="roomID">
-        <option value="" selected>None</option>
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
+      <select name="roomID" id="roomSelect">
       </select>
     </fieldset>
     <input class="btn" type="button" value="Add Employee" onclick="handleData(1, 0)">
@@ -71,37 +55,19 @@
     <legend><strong>Update Employee</strong></legend>
     <fieldset class="fields">
       <input type="hidden" name="employeeID">
-      
       <label> Name: </label>
       <input type="text" name="name">
       <br>
       <label> DepartmentID: </label>
-      <select name="departmentID">
-        <option value="" selected>None</option>
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
+      <select name="departmentID" id="departmentSelect">
       </select>
       <br>
       <label> ManagerID: </label>
-      <select name="managerID">
-        <option value="">None</option>
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
+      <select name="managerID" id="managerSelect">
       </select>
       <br>
       <label> RoomID: </label>
-      <select name="roomID">
-        <option value="">None</option>
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
+      <select name="roomID" id="roomSelect">
       </select>
     </fieldset>
     <input class="btn" type="button" value="Save Employee" onclick="handleData(1, 1)">

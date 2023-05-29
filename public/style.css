@@ -25,3 +25,8 @@ table, th, td {
 th, td {
     padding: 5px;
 }
+
+.clickable {
+    color: #0d3d7a;
+    cursor: pointer;
+}
