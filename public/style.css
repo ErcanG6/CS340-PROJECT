@@ -1,17 +1,68 @@
 :root {
-    --varName: 0;
+    --backgroundColor: #17212b;
+    --logoColor: #6F7D8C;
+    --textColorPreHover: #6F7D8C;
+    --textColor: #A1CDA8;
+    color: red; /*font color*/
 }
 
-.site-name {
-    color: blue;
+body {
+    background-color: var(--backgroundColor);
+}
+
+.pageTitle {
+    color: var(--logoColor);
+    margin-left: 5%;
+}
+
+nav {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: default;
+    align-items: center;
+}
+
+nav a {
+    position: relative;
+    border-radius: 20px;
+    padding: 10px 20px;
+    overflow: hidden;
+    align-items: center;
+    text-decoration: none;
+    color: var(--textColorPreHover);
+    transition-duration: 500ms;
+}
+
+nav a:hover {
+    color: var(--textColor);
+    transition-duration: 500ms;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    z-index: -1;
+    transition-duration: 500ms;
+    transform: scaleY(0);
+}
+
+nav a:hover::after {
+    height: 100%;
+    transform: scaleY(1);
+    transition-duration: 500ms;
 }
 
 .active {
     color: blue;
-}
-
-.nav {
-    color: red;
 }
 
 #browse, #insert, #update, #delete, #view {
