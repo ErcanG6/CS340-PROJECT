@@ -96,7 +96,7 @@ th, td {
 }
 
 tr:hover {
-    background-color: var(--actionColor);
+    background-color: green/*var(--actionColor)*/;
 }
 
 .clickable {
