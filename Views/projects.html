@@ -34,17 +34,17 @@
 </div> <!-- browse -->
 
 <div id="insert">
-  <form id="createData">
+  <form id="createData" onsubmit="handleData(3, 0); return false">
     <legend><strong>Add Project</strong></legend>
     <fieldset class="fields">
       <label> StartDate: </label>
-      <input type="date" name="startDate" onclick="this.showPicker()">
+      <input type="date" name="startDate" onclick="this.showPicker()" required>
       <br>
       <label> EndDate: </label>
-      <input type="date" name="endDate" onclick="this.showPicker()">
+      <input type="date" name="endDate" onclick="this.showPicker()" required>
       <br>
       <label> Deadline: </label>
-      <input type="date" name="deadline" onclick="this.showPicker()">
+      <input type="date" name="deadline" onclick="this.showPicker()" required>
       <br>
       <label> Progress: </label>
       <input type="range" name="progress" min="0" max="100" value="0" oninput="ProgressChanged(this, 'createProgressOutput')">
@@ -54,24 +54,24 @@
       <select name="departmentID" id="departmentSelect">
       </select>
     </fieldset>
-    <input class="btn" type="button" value="Add Project" onclick="handleData(3, 0)">
+    <input class="btn" type="submit" value="Add Project">
     <input class="btn" type="button" value="cancel" onclick="browseForm()">
   </form> 
 </div><!-- insert -->
 
 <div id="update">
-  <form id="updateData">
+  <form id="updateData" onsubmit="handleData(3, 1); return false">
     <legend><strong>Update Project</strong></legend>
     <fieldset class="fields">
       <input type="hidden" name="projectID">
       <label> StartDate: </label>
-      <input type="date" name="startDate" onclick="this.showPicker()">
+      <input type="date" name="startDate" onclick="this.showPicker()" required>
       <br>
       <label> EndDate: </label>
-      <input type="date" name="endDate" onclick="this.showPicker()">
+      <input type="date" name="endDate" onclick="this.showPicker()" required>
       <br>
       <label> Deadline: </label>
-      <input type="date" name="deadline" onclick="this.showPicker()">
+      <input type="date" name="deadline" onclick="this.showPicker()" required>
       <br>
       <label> Progress: </label>
       <input type="range" name="progress" min="0" max="100" oninput="ProgressChanged(this, 'updateProgressOutput')">
@@ -81,7 +81,7 @@
       <select name="departmentID" id="departmentSelect">
       </select>
     </fieldset>
-    <input class="btn" type="button" value="Save Project" onclick="handleData(3, 1)">
+    <input class="btn" type="submit" value="Save Project">
     <input class="btn" type="button" value="cancel" onclick="browseForm()">
 	</form> 
 </div><!-- update -->
