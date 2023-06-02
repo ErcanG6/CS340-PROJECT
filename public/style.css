@@ -101,7 +101,13 @@ tr:hover {
 
 .clickable {
     color: var(--actionColor);
+    transition-duration: var(--transitionLength);
     cursor: pointer;
+}
+
+.clickable:hover {
+    color: var(--accentColor);
+    transition-duration: var(--transitionLength);
 }
 
 .circleContainer {
