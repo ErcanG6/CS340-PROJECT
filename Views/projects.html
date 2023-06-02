@@ -11,7 +11,7 @@
 <nav>
   <a href="/">Index</a>
   <a href="Employees">Employees</a>
-  <a href="Projects">Projects</a>
+  <a href="Projects" class="active">Projects</a>
   <a href="EmployeesProjects">Employees_Projects</a>
   <a href="Departments">Departments</a>
   <a href="Rooms">Rooms</a>
@@ -47,12 +47,13 @@
       <input type="date" name="deadline" onclick="this.showPicker()" required>
       <br>
       <label> Progress: </label>
-      <input type="range" name="progress" min="0" max="100" value="0" oninput="ProgressChanged(this, 'createProgressOutput')">
-      <p id="createProgressOutput" style="display: inline-block;">0</p>
+      <span class="required">
+        <input type="range" name="progress" min="0" max="100" value="0" oninput="ProgressChanged(this, 'createProgressOutput')">
+        <p id="createProgressOutput" style="display: inline-block;">0</p>
+      </span>
       <br>
       <label> Department: </label>
-      <select name="departmentID" id="departmentSelect">
-      </select>
+      <select name="departmentID" id="departmentSelect"></select>
     </fieldset>
     <input class="btn" type="submit" value="Add Project">
     <input class="btn" type="button" value="cancel" onclick="browseForm()">
@@ -74,12 +75,13 @@
       <input type="date" name="deadline" onclick="this.showPicker()" required>
       <br>
       <label> Progress: </label>
-      <input type="range" name="progress" min="0" max="100" oninput="ProgressChanged(this, 'updateProgressOutput')">
-      <p id="updateProgressOutput" style="display: inline-block;">0</p>
+      <span class="required">
+        <input type="range" name="progress" min="0" max="100" oninput="ProgressChanged(this, 'updateProgressOutput')">
+        <p id="updateProgressOutput" style="display: inline-block;">0</p>
+      </span>
       <br>
       <label> Department: </label>
-      <select name="departmentID" id="departmentSelect">
-      </select>
+      <select name="departmentID" id="departmentSelect"></select>
     </fieldset>
     <input class="btn" type="submit" value="Save Project">
     <input class="btn" type="button" value="cancel" onclick="browseForm()">

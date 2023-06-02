@@ -14,7 +14,7 @@
   <a href="Projects">Projects</a>
   <a href="EmployeesProjects">Employees_Projects</a>
   <a href="Departments">Departments</a>
-  <a href="Rooms">Rooms</a>
+  <a href="Rooms" class="active">Rooms</a>
 </nav>
 
 <div id="browse">
@@ -35,11 +35,12 @@
     <legend><strong>Add Room</strong></legend>
     <fieldset class="fields">
       <label> Number: </label>
-      <input type="number" name="number" required>
+      <span class="required">
+        <input type="number" name="number" required>
+      </span>
       <br>
       <label> DepartmentID: </label>
-      <select name="departmentID" id="departmentSelect">
-      </select>
+      <select name="departmentID" id="departmentSelect"></select>
     </fieldset>
     <input class="btn" type="submit" value="Add Room">
     <input class="btn" type="button" value="cancel" onclick="browseForm()">
@@ -52,11 +53,12 @@
     <fieldset class="fields">
       <input type="hidden" name="roomID">
       <label> Number: </label>
-      <input type="number" name="number" required>
+      <span class="required">
+        <input type="number" name="number" required>
+      </span>
       <br>
       <label> DepartmentID: </label>
-      <select name="departmentID" id="departmentSelect">
-      </select>
+      <select name="departmentID" id="departmentSelect"></select>
     </fieldset>
     <input class="btn" type="submit" value="Save Room">
     <input class="btn" type="button" value="cancel" onclick="browseForm()">

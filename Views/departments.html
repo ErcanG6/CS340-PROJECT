@@ -13,7 +13,7 @@
   <a href="Employees">Employees</a>
   <a href="Projects">Projects</a>
   <a href="EmployeesProjects">Employees_Projects</a>
-  <a href="Departments">Departments</a>
+  <a href="Departments" class="active">Departments</a>
   <a href="Rooms">Rooms</a>
 </nav>
 
@@ -35,7 +35,9 @@
     <legend><strong>Add Department</strong></legend>
     <fieldset class="fields">
       <label> Name: </label>
-      <input type="text" name="name" required>
+      <span class="required">
+        <input type="text" name="name" required>
+      </span>
       <br>
       <label> ManagerID: </label>
       <select name="managerID" id="managerSelect">
@@ -52,11 +54,12 @@
     <fieldset class="fields">
       <input type="hidden" name="departmentID">
       <label> Name: </label>
-      <input type="text" name="name" required>
+      <span class="required">
+        <input type="text" name="name" required>
+      </span>
       <br>
       <label> ManagerID: </label>
-      <select name="managerID" id="managerSelect">
-      </select>
+      <select name="managerID" id="managerSelect"></select>
     </fieldset>
     <input class="btn" type="submit" value="Save Department">
     <input class="btn" type="button" value="cancel" onclick="browseForm()">

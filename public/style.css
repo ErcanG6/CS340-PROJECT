@@ -53,11 +53,13 @@ nav a {
     align-items: center;
     text-decoration: none;
     color: var(--textColorPreHover);
+    opacity: 0.75;
     transition-duration: var(--transitionLength);
 }
 
 nav a:hover {
     color: var(--textColor);
+    opacity: 1;
     transition-duration: var(--transitionLength);
 }
 
@@ -79,8 +81,9 @@ nav a:hover::after {
     transition-duration: var(--transitionLength);
 }
 
-.active {/*This isn't used right now*/
-    color: blue;
+.active {
+    color: var(--alertColor);
+    opacity: 0.5;
 }
 
 /*Forms*/
@@ -88,9 +91,10 @@ nav a:hover::after {
     display: none;
 }
 
-.required::before {
+.required::after {
     content: '*';
     color: var(--alertColor);
+    padding-left: 5px;
 }
 
 /*Tables*/

@@ -12,7 +12,7 @@
   <a href="/">Index</a>
   <a href="Employees">Employees</a>
   <a href="Projects">Projects</a>
-  <a href="EmployeesProjects">Employees_Projects</a>
+  <a href="EmployeesProjects" class="active">Employees_Projects</a>
   <a href="Departments">Departments</a>
   <a href="Rooms">Rooms</a>
 </nav>
@@ -34,12 +34,14 @@
     <legend><strong>Add Employee to Project</strong></legend>
     <fieldset class="fields">
       <label> EmployeeID </label>
-      <select name="employeeID" id="employeeSelect">
-      </select>
+      <span class="required">
+        <select name="employeeID" id="employeeSelect"></select>
+      </span>
       <br>
       <label> ProjectID </label>
-      <select name="projectID" id="projectSelect">
-      </select>
+      <span class="required">
+        <select name="projectID" id="projectSelect"></select>
+      </span>
       <br>
     </fieldset>
     <input class="btn" type="button" value="Add Employee Project" onclick="handleData(2, 0)">
@@ -54,12 +56,14 @@
       <input type="hidden" name="oldEmployeeID">
       <input type="hidden" name="oldProjectID">
       <label> EmployeeID </label>
-      <select name="employeeID" id="employeeSelect">
-      </select>
+      <span class="required">
+        <select name="employeeID" id="employeeSelect"></select>
+      </span>
       <br>
       <label> ProjectID </label>
-      <select name="projectID" id="projectSelect">
-      </select>
+      <span class="required">
+        <select name="projectID" id="projectSelect"></select>
+      </span>
       <br>
     </fieldset>
     <input class="btn" type="button" value="Save Employee Project" onclick="handleData(2, 1)">
