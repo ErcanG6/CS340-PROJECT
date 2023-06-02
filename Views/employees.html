@@ -33,12 +33,12 @@
 </div> <!-- browse -->
 
 <div id="insert">
-  <form id="createData">
+  <form id="createData" onsubmit="handleData(1, 0); return false">
     <legend><strong>Add Employee</strong></legend>
     <fieldset class="fields">
       <input type="hidden" name="employeeID">
       <label> Name: </label>
-      <input type="text" name="name">
+      <input type="text" name="name" required>
       <br>
       <label> DepartmentID: </label>
       <select name="departmentID" id="departmentSelect">
@@ -52,18 +52,18 @@
       <select name="roomID" id="roomSelect">
       </select>
     </fieldset>
-    <input class="btn" type="button" value="Add Employee" onclick="handleData(1, 0)">
+    <input class="btn" type="submit" value="Add Employee">
     <input class="btn" type="button" value="cancel" onclick="browseForm()">
   </form> 
 </div><!-- insert -->
 
 <div id="update">
-  <form id="updateData">
+  <form id="updateData" onsubmit="handleData(1, 1); return false">
     <legend><strong>Update Employee</strong></legend>
     <fieldset class="fields">
       <input type="hidden" name="employeeID">
       <label> Name: </label>
-      <input type="text" name="name">
+      <input type="text" name="name" required>
       <br>
       <label> DepartmentID: </label>
       <select name="departmentID" id="departmentSelect">
@@ -77,7 +77,7 @@
       <select name="roomID" id="roomSelect">
       </select>
     </fieldset>
-    <input class="btn" type="button" value="Save Employee" onclick="handleData(1, 1)">
+    <input class="btn" type="submit" value="Save Employee">
     <input class="btn" type="button" value="cancel" onclick="browseForm()">
 	</form> 
 </div><!-- update -->

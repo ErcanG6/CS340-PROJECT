@@ -169,6 +169,7 @@ function handleResponse(res) {
 async function handleData(type, action) {
     var formID = null;
     var requestType = null;
+    var entries = [];
     switch(action) {
         case 0:
             formID = 'createData';
@@ -188,8 +189,13 @@ async function handleData(type, action) {
     var data = Object.fromEntries(formData.entries());
 
     Object.entries(data).forEach(entry => {
+        entries.push(entry[1]);
         if(entry[1] == '') data[entry[0]] = 'NULL';
     });
+
+    // Check StartDate is less than EndDate and Deadline
+    if(entries[0] > entries[1] || entries[0] > entries[2])
+        alert("StartDate must be the earliest date!");
     
     //send request to api, inserting data, and getting response
     var resData = handleResponse(await sendRequest(requestType, type, data));

@@ -31,34 +31,34 @@
 </div>
 
 <div id="insert">
-  <form id="createData">
+  <form id="createData" onsubmit="handleData(0, 0); return false">
     <legend><strong>Add Department</strong></legend>
     <fieldset class="fields">
       <label> Name: </label>
-      <input type="text" name="name">
+      <input type="text" name="name" required>
       <br>
       <label> ManagerID: </label>
       <select name="managerID" id="managerSelect">
       </select>
     </fieldset>
-    <input class="btn" type="button" value="Add Department" onclick="handleData(0, 0)">
+    <input class="btn" type="submit" value="Add Department">
     <input class="btn" type="button" value="cancel" onclick="browseForm()">
   </form> 
 </div><!-- insert -->
 
 <div id="update">
-  <form id="updateData">
+  <form id="updateData" onsubmit="handleData(0, 1); return false">
     <legend><strong>Update Department</strong></legend>
     <fieldset class="fields">
       <input type="hidden" name="departmentID">
       <label> Name: </label>
-      <input type="text" name="name">
+      <input type="text" name="name" required>
       <br>
       <label> ManagerID: </label>
       <select name="managerID" id="managerSelect">
       </select>
     </fieldset>
-    <input class="btn" type="button" value="Save Department" onclick="handleData(0, 1)">
+    <input class="btn" type="submit" value="Save Department">
     <input class="btn" type="button" value="cancel" onclick="browseForm()">
 	</form> 
 </div><!-- update -->
