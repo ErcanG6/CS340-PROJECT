@@ -3,7 +3,8 @@
     --primaryColor: #17212b;
     --secondaryColor: #6F7D8C;
     --accentColor: #A1CDA8;
-    --actionColor: #06b2f2;/*Old color: #0d3d7a*/
+    --actionColor: #06b2f2;
+    --alertColor: #E26D5A;
 
     /*Variables using palette*/
     --backgroundColor: var(--primaryColor);
@@ -13,6 +14,10 @@
 
     --transitionLength: 500ms;
 
+    /*could use gradient to make table rows fade in?
+    could make a time to control animations and set it from js
+    --time: 0;
+    */
     /*Animation*/
     --circleRotation: 10deg;
 }
@@ -27,6 +32,7 @@ body {
     margin-left: 5%;
 }
 
+/*Nav list*/
 nav {
     position: relative;
     display: flex;
@@ -73,14 +79,21 @@ nav a:hover::after {
     transition-duration: var(--transitionLength);
 }
 
-.active {
+.active {/*This isn't used right now*/
     color: blue;
 }
 
+/*Forms*/
 #browse, #insert, #update, #delete, #view {
     display: none;
 }
 
+.required::before {
+    content: '*';
+    color: var(--alertColor);
+}
+
+/*Tables*/
 table {
     position: relative;
     left: 50%;
@@ -99,6 +112,7 @@ tr:hover {
     background-color: green/*var(--actionColor)*/;
 }
 
+/*Table buttons*/
 .clickable {
     color: var(--actionColor);
     transition-duration: var(--transitionLength);
@@ -110,6 +124,7 @@ tr:hover {
     transition-duration: var(--transitionLength);
 }
 
+/*Index Animation*/
 .circleContainer {
     position: absolute;
     top: 50%;

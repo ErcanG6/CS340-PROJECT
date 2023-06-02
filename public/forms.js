@@ -301,6 +301,8 @@ async function updateDepartmentsOptions() {
         for (; i >= 0; i--) { // Remove previous options of list if there were any
             form.remove(i);
         }
+        let newOption = new Option("None", "");
+        form.add(newOption, undefined);
         dataMan.forEach(manager => {
             let newOption = new Option(manager.employeeID, manager.employeeID);
             form.add(newOption, undefined);
