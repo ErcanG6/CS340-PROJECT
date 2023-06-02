@@ -3,7 +3,6 @@
     <meta charset="utf-8">
     <title>InnovativeSoft Database | Home</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-
   </head>
   
   <body>
@@ -16,5 +15,20 @@
       <a href="Departments">Departments</a>
       <a href="Rooms">Rooms</a>
     </nav>
+    <div class="circleContainer">
+      <div class="circle" style="--offset: 0deg;"></div>
+      <div class="circle" style="--offset: 5deg;"></div>
+      <div class="circle" style="--offset: 10deg;"></div>
+      <div class="rectangle" style="--offset: 10deg;"></div>
+      <script>
+        const stepSize = 0.02;
+        const refreshTime = 10;
+        let currRot = 0;
+        setInterval(() => {
+          currRot = (currRot + stepSize) % 360;
+          document.querySelector(':root').style.setProperty('--circleRotation', (''+currRot+'deg'));
+        }, refreshTime);
+      </script>
+    </div>
   </body>
 </html>

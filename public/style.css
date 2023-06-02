@@ -1,13 +1,25 @@
 :root {
-    --backgroundColor: #17212b;
-    --logoColor: #6F7D8C;
-    --textColorPreHover: #6F7D8C;
-    --textColor: #A1CDA8;
-    color: red; /*font color*/
+    /*Color palette*/
+    --primaryColor: #17212b;
+    --secondaryColor: #6F7D8C;
+    --accentColor: #A1CDA8;
+    --actionColor: #06b2f2;/*Old color: #0d3d7a*/
+
+    /*Variables using palette*/
+    --backgroundColor: var(--primaryColor);
+    --logoColor: var(--secondaryColor);
+    --textColorPreHover: var(--secondaryColor);
+    --textColor: var(--accentColor);
+
+    --transitionLength: 500ms;
+
+    /*Animation*/
+    --circleRotation: 10deg;
 }
 
 body {
     background-color: var(--backgroundColor);
+    color: var(--textColor);
 }
 
 .pageTitle {
@@ -28,18 +40,19 @@ nav {
 
 nav a {
     position: relative;
+    text-align: center;
     border-radius: 20px;
     padding: 10px 20px;
     overflow: hidden;
     align-items: center;
     text-decoration: none;
     color: var(--textColorPreHover);
-    transition-duration: 500ms;
+    transition-duration: var(--transitionLength);
 }
 
 nav a:hover {
     color: var(--textColor);
-    transition-duration: 500ms;
+    transition-duration: var(--transitionLength);
 }
 
 nav a::after {
@@ -51,14 +64,13 @@ nav a::after {
     width: 100%;
     background-color: black;
     z-index: -1;
-    transition-duration: 500ms;
+    transition-duration: var(--transitionLength);
     transform: scaleY(0);
 }
 
 nav a:hover::after {
-    height: 100%;
     transform: scaleY(1);
-    transition-duration: 500ms;
+    transition-duration: var(--transitionLength);
 }
 
 .active {
@@ -69,15 +81,63 @@ nav a:hover::after {
     display: none;
 }
 
+table {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 table, th, td {
-    border: 1px solid black;
+    border: 1px solid white;
 }
 
 th, td {
     padding: 5px;
 }
 
+tr:hover {
+    background-color: var(--actionColor);
+}
+
 .clickable {
-    color: #0d3d7a;
+    color: var(--actionColor);
     cursor: pointer;
+}
+
+.circleContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    transform-origin: center;
+    transform: translate(-50%, -50%) rotate(var(--circleRotation));
+}
+
+.circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80vh;
+    height: 80vh;
+    border-radius: 50%;
+    border: 35px dotted;
+    opacity: 0.1;
+    transform-origin: center;
+    transform: translate(-50%, -50%) rotate(var(--offset));
+}
+
+.circle:nth-child(3n+1) {
+    border-color: var(--actionColor);
+}
+
+.circle:nth-child(3n+2) {
+    border-color: red;
+}
+
+.circle:nth-child(3n+3) {
+    border-color: green;
+}
+
+.rectangle {
+    opacity: 0;
 }
