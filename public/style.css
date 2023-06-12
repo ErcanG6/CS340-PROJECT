@@ -97,6 +97,12 @@ nav a:hover::after {
     padding-left: 5px;
 }
 
+#searchBox {
+    position: relative;
+    left: 66%;
+    transform: translateX(-50%);
+}
+
 /*Tables*/
 table {
     position: relative;

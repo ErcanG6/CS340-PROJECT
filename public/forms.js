@@ -194,7 +194,7 @@ async function handleData(type, action) {
     });
 
     // Check StartDate is less than EndDate and Deadline
-    if(entries[0] > entries[1] || entries[0] > entries[2])
+    if((entries[0] > entries[1] || entries[0] > entries[2]) && type == 3)
         alert("StartDate must be the earliest date!");
     
     //send request to api, inserting data, and getting response
@@ -421,6 +421,20 @@ async function updateRoomsOptions() {
             form.add(newOption, undefined);
         });
     });
+}
+
+function searchEmployee() {
+    name_search = document.getElementById("searchTerm");
+    name_search = name_search.value.toLowerCase();
+    employee_table = document.getElementById("browseTable");
+    employees = employee_table.getElementsByTagName("tr");
+    for (i = 1; i < employees.length; i++) {
+        employee_name = employees[i].getElementsByTagName("td")[4].innerHTML.toLowerCase()
+        if (employee_name.includes(name_search))
+            employees[i].style.display = "";
+        else
+            employees[i].style.display = "none";
+    }
 }
 
 function constructDepartmentRow(departmentID, name, managerID) {
